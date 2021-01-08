@@ -62,10 +62,10 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(427, 12);
+            this.btnNext.Location = new System.Drawing.Point(407, 12);
             this.btnNext.Margin = new System.Windows.Forms.Padding(0);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(88, 25);
+            this.btnNext.Size = new System.Drawing.Size(108, 25);
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "下一步 >";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -79,6 +79,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += SetupCommonEventHandler.CancelButton_OnClick;
             // 
             // panDesc
             // 
@@ -97,7 +98,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(389, 100);
             this.label2.TabIndex = 1;
-            this.label2.Text = "此棈靈將會引導你設定Auto Google Meet。要繼續，請按下一步；如你不想繼續，按取消。";
+            this.label2.Text = "此精靈將會引導你設定Auto Google Meet。要繼續，請按下一步；否則，按取消。";
             // 
             // label1
             // 
@@ -116,8 +117,12 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.Controls.Add(this.panDesc);
             this.Controls.Add(this.panButtons);
             this.Controls.Add(this.panImage);
+            this.ControlBox = false;
             this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
+            this.MaximizeBox = false;
             this.Name = "frmSetupWelcome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto Google Meet 設定精靈";
