@@ -40,6 +40,13 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="SetupUI\frmSetupWelcome.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="SetupUI\frmSetupWelcome.Designer.cs">
+          <DependentUpon>frmSetupWelcome.cs</DependentUpon>
+        </Compile>
+        <Compile Include="SetupUI\SetupCommonEventHandler.cs" />
         <Compile Include="UIController.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
@@ -48,6 +55,11 @@
         <Project>{b42865f7-ce07-4bbe-b376-38e76a9be008}</Project>
         <Name>AutoGoogleMeet.Settings</Name>
       </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="SetupUI\frmSetupWelcome.resx">
+        <DependentUpon>frmSetupWelcome.cs</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,23 @@
+{
+    "MeetBehavior":{
+        "Join":{
+            "AutoRefreshInterval":5000,
+            "DisableMicrophone":true,
+            "DisableCamera":true,
+            "JoinAutomatically":true
+        },
+        "Leave":{
+            "LeaveAutomatically":true,
+            "LeaveAlert":{
+                "SkipAlert":false,
+                "AlertTime":5
+            }
+        },
+        "Load":{
+            "WaitForMS":3000
+        }
+    },
+    "AppManifest": {
+        "SetupCompleted": false
+    }
+}

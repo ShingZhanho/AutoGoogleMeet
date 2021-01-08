@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using AutoGoogleMeet.UI;
 
 namespace AutoGoogleMeet.Core {
@@ -12,7 +8,7 @@ namespace AutoGoogleMeet.Core {
         /// </summary>
         [STAThread]
         static void Main() {
-            
+            UIController.Main(null);
         }
     }
 }
