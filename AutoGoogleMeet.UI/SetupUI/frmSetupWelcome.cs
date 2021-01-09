@@ -42,7 +42,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
                     $"{Environment.SystemDirectory}\\AutoGoogleMeetTestFolder");
                 Directory.Delete($"{Environment.SystemDirectory}\\AutoGoogleMeetTestFolder");
             }
-            catch (UnauthorizedAccessException e) {
+            catch (UnauthorizedAccessException) {
                 // Not running as admin
                 return false;
             }
