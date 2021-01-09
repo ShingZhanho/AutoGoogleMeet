@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SetupUI\frmSetupCopyFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetupUI\frmSetupCopyFiles.Designer.cs">
+      <DependentUpon>frmSetupCopyFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="SetupUI\frmUserAgreement.cs">
       <SubType>Form</SubType>
     </Compile>
