@@ -12,7 +12,8 @@ namespace AutoGoogleMeet.UI {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // show Setup form if not done
-            if (!SetupIsCompleted()) Application.Run(new frmSetupWelcome());
+            if (!SetupIsCompleted()) new frmSetupWelcome().Show();
+            Application.Run();
         }
 
         private static bool SetupIsCompleted() {

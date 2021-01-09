@@ -67,6 +67,10 @@ namespace AutoGoogleMeet.UI.SetupUI {
                 }.Start();
                 Application.Exit();
             }
+
+            // show User agreement UI
+            new frmUserAgreement().Show();
+            Close();
         }
     }
 }

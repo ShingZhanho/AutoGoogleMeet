@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AutoGoogleMeetIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -40,11 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SetupUI\frmSetupUserAgreement.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SetupUI\frmUserAgreement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetupUI\frmSetupUserAgreement.designer.cs">
-      <DependentUpon>frmSetupUserAgreement.cs</DependentUpon>
+    <Compile Include="SetupUI\frmUserAgreement.designer.cs">
+      <DependentUpon>frmUserAgreement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetupUI\TemplateSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetupUI\TemplateSetupForm.designer.cs">
+      <DependentUpon>TemplateSetupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SetupUI\frmSetupWelcome.cs">
       <SubType>Form</SubType>
@@ -63,13 +80,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SetupUI\frmSetupUserAgreement.resx">
-      <DependentUpon>frmSetupUserAgreement.cs</DependentUpon>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetupUI\frmUserAgreement.resx">
+      <DependentUpon>frmUserAgreement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetupUI\TemplateSetupForm.resx">
+      <DependentUpon>TemplateSetupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetupUI\frmSetupWelcome.resx">
       <DependentUpon>frmSetupWelcome.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="AutoGoogleMeetIcon.ico" />
+    <None Include="Resources\SetupBanner.png" />
+    <None Include="Resources\Setup\UserAgreement_zh-HK.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
