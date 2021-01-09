@@ -98,7 +98,7 @@
     <Content Include="AutoGoogleMeetIcon.ico" />
     <None Include="Resources\SetupBanner.png" />
     <None Include="Resources\Setup\UserAgreement_zh-HK.rtf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup />
