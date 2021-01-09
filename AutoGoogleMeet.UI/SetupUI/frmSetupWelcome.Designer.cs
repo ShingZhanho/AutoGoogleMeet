@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
+using AutoGoogleMeet.Settings;
 
 namespace AutoGoogleMeet.UI.SetupUI {
     partial class frmSetupWelcome {
@@ -35,13 +37,14 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.panDesc = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.panButtons.SuspendLayout();
             this.panDesc.SuspendLayout();
             this.SuspendLayout();
             // 
             // panImage
             // 
-            this.panImage.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("panImage.BackgroundImage")));
+            this.panImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panImage.BackgroundImage")));
             this.panImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panImage.Location = new System.Drawing.Point(0, 0);
             this.panImage.Margin = new System.Windows.Forms.Padding(0);
@@ -69,9 +72,11 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "下一步 >";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.Location = new System.Drawing.Point(528, 12);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancel.Name = "btnCancel";
@@ -79,13 +84,14 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += SetupCommonEventHandler.CancelButton_OnClick;
+            this.btnCancel.Click += new EventHandler(SetupCommonEventHandler.CancelButton_OnClick);
             // 
             // panDesc
             // 
             this.panDesc.BackColor = System.Drawing.Color.White;
             this.panDesc.Controls.Add(this.label2);
             this.panDesc.Controls.Add(this.label1);
+            this.panDesc.Controls.Add(this.lblVersion);
             this.panDesc.Location = new System.Drawing.Point(170, 0);
             this.panDesc.Margin = new System.Windows.Forms.Padding(0);
             this.panDesc.Name = "panDesc";
@@ -102,25 +108,36 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(24, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(322, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "歡迎使用Auto Google Meet";
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(355, 356);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(93, 20);
+            this.lblVersion.TabIndex = 2;
+            this.lblVersion.Text = Constants.Version;
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmSetupWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 425);
+            this.ControlBox = false;
             this.Controls.Add(this.panDesc);
             this.Controls.Add(this.panButtons);
             this.Controls.Add(this.panImage);
-            this.ControlBox = false;
-            this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.DimGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "frmSetupWelcome";
@@ -128,7 +145,9 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.Text = "Auto Google Meet 設定精靈";
             this.panButtons.ResumeLayout(false);
             this.panDesc.ResumeLayout(false);
+            this.panDesc.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Button btnNext;
@@ -138,6 +157,8 @@ namespace AutoGoogleMeet.UI.SetupUI {
         private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Label label1;
+        
+        private System.Windows.Forms.Label lblVersion;
 
         private System.Windows.Forms.Panel panDesc;
 
