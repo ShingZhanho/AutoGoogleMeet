@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -17,31 +18,64 @@ namespace AutoGoogleMeet.UI.SetupUI {
 
         public void frmSetupCopyFiles_Load(object sender, EventArgs e) {
             var copyUtil = new SetupFileCopier(lblCurrentOperation, pgBar);
+            btnNext.Enabled = false;
+
+            // install in background
+            var bgw = new BackgroundWorker() {
+                WorkerReportsProgress = false,
+                WorkerSupportsCancellation = true
+            };
+            bgw.DoWork += bgw_DoWork;
+            bgw.RunWorkerCompleted += bgw_Completed;
+            bgw.RunWorkerAsync(copyUtil);
+        }
+
+        #region Background worker methods
+
+        private void bgw_DoWork(object sender, DoWorkEventArgs e) {
+            var copyUtil = e.Argument as SetupFileCopier;
             var installDir = Path.Combine(
                 Path.GetPathRoot(Environment.SystemDirectory),
                 "AutoGoogleMeet");
+
             if (!Directory.Exists(installDir)) {
                 copyUtil.CreateDir(installDir);
             } else {
                 // Warning of deletion
                 var dResults = MessageBox.Show(
                     "一個Auto Google Meet已經在本機上完成設定，繼續進行會刪除原有的設定。如果你要更新到新版，請使用內置的更新工具。\n" +
-                    "你是否要繼續？", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    "你是否要繼續？", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dResults == DialogResult.Yes) {
                     // Delete all existing files
                     var attempt = 0;
-                    while (attempt < 5) {
+                    while (attempt < 5) { // Try for at most 5 times
+                        if (e.Cancel) { // Canceled
+                            Application.Exit(); // Leave without tidying up
+                        }
                         attempt += 1;
                         try {
+                            copyUtil.UpdateUIManually("正在嘗試刪除舊版...");
                             Directory.Delete(installDir, true);
                         } catch {
+                            // If delete failed, kill the running process then delete again
                             try {
                                 foreach (var proc in Process.GetProcessesByName("AutoGoogleMeet")) {
+                                    copyUtil.UpdateUIManually("失敗，正在嘗試停止舊版，然後重試...");
                                     if (proc.Id == Process.GetCurrentProcess().Id) continue;
-                                    proc.Kill();
+                                    proc.Kill(); // kill running process
+                                    break;
                                 }
                             } catch {
                                 // ignored
+                            }
+                            // fails for 5 times, end installation and exit
+                            if (attempt == 5) {
+                                MessageBox.Show("無法刪除舊版的Auto Google Meet，設定精靈將會關閉。",
+                                    "Auto Google Meet 設定精靈",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                // The application will not be able to clean up under this circumstance
+                                // Exit automatically
+                                Application.Exit();
                             }
                             continue;
                         }
@@ -55,6 +89,21 @@ namespace AutoGoogleMeet.UI.SetupUI {
             }
             copyUtil.CopyAll(Application.StartupPath, installDir);
         }
+
+        private void bgw_Completed(object sender, RunWorkerCompletedEventArgs e) {
+            if (e.Cancelled) {
+                // Tidy up and exit
+                Directory.Delete(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), "AutoGoogleMeet"));
+                Application.Exit();
+            }
+
+            // Update UI
+            lblCurrentOperation.Text = "完成";
+            pgBar.Value = pgBar.Maximum;
+            btnNext.Enabled = true;
+        }
+
+        #endregion
 
     }
 
@@ -78,6 +127,11 @@ namespace AutoGoogleMeet.UI.SetupUI {
             _outputLabel.Text = $"正在複製檔案：{destinationPath}";
             File.Copy(fromPath, destinationPath);
             if (_bar.Value + 2 < _bar.Maximum) _bar.Value += 2;
+        }
+
+        public void UpdateUIManually(string text, int progress = -1) {
+            _outputLabel.Text = text;
+            if (progress >= _bar.Minimum && progress <= _bar.Maximum) _bar.Value = progress;
         }
 
         public void CopyAll(string fromDir, string destinationDir, int delay = 0) {
