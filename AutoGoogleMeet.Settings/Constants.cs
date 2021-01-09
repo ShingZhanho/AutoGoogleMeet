@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-[assembly:AssemblyVersion("0.0.1")]
+[assembly:AssemblyVersion("0.0.1.1")]
 
 namespace AutoGoogleMeet.Settings {
     public static class Constants {
@@ -36,6 +36,6 @@ namespace AutoGoogleMeet.Settings {
         /// </summary>
         public static readonly string ExePath = Application.StartupPath;
 
-        public const string Version = "v0.0.1_beta";
+        public const string Version = "v0.0.1.1_beta";
     }
 }

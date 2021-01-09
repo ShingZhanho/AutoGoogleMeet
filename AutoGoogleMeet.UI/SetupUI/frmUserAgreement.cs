@@ -16,4 +16,9 @@ public partial class frmUserAgreement : TemplateSetupForm {
                          "如你按下「下一步」，仍表示你同意使用條款。";
         }
     }
+
+    private void btnNext_Click(object sender, EventArgs e) {
+        new frmSetupCopyFiles().Show();
+        Close();
+    }
 }

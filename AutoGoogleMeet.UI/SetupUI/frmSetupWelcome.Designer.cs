@@ -84,7 +84,6 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new EventHandler(SetupCommonEventHandler.CancelButton_OnClick);
             // 
             // panDesc
             // 
@@ -120,9 +119,9 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.lblVersion.AutoSize = true;
             this.lblVersion.Location = new System.Drawing.Point(355, 356);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(93, 20);
+            this.lblVersion.Size = new System.Drawing.Size(106, 20);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = Constants.Version;
+            this.lblVersion.Text = "v0.0.1.1_beta";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmSetupWelcome
@@ -135,7 +134,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.Controls.Add(this.panButtons);
             this.Controls.Add(this.panImage);
             this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.DimGray;
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);

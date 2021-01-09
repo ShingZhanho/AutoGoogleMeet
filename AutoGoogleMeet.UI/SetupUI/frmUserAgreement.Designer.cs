@@ -9,6 +9,10 @@ public partial class frmUserAgreement {
             this.panImage.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnNext
+            // 
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
             // panDesc
             // 
             this.panDesc.Controls.Add(this.label1);

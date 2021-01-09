@@ -90,6 +90,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SetupUI\frmSetupCopyFiles.resx">
+      <DependentUpon>frmSetupCopyFiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetupUI\frmUserAgreement.resx">
       <DependentUpon>frmUserAgreement.cs</DependentUpon>
     </EmbeddedResource>
