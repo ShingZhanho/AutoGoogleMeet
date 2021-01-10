@@ -14,20 +14,25 @@ namespace AutoGoogleMeet.UI.SetupUI {
         public frmSetupCopyFiles() {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+
+            // Replace cancel button event handlers
+            btnCancel.Click -= SetupCommonEventHandler.CancelButton_OnClick;
+            btnCancel.Click += this.ButtonCancel_OnClick;
         }
+        private BackgroundWorker _bgw;
 
         public void frmSetupCopyFiles_Load(object sender, EventArgs e) {
             var copyUtil = new SetupFileCopier(lblCurrentOperation, pgBar);
             btnNext.Enabled = false;
 
             // install in background
-            var bgw = new BackgroundWorker() {
+            _bgw = new BackgroundWorker() {
                 WorkerReportsProgress = false,
                 WorkerSupportsCancellation = true
             };
-            bgw.DoWork += bgw_DoWork;
-            bgw.RunWorkerCompleted += bgw_Completed;
-            bgw.RunWorkerAsync(copyUtil);
+            _bgw.DoWork += bgw_DoWork;
+            _bgw.RunWorkerCompleted += bgw_Completed;
+            _bgw.RunWorkerAsync(copyUtil);
         }
 
         #region Background worker methods
@@ -37,6 +42,9 @@ namespace AutoGoogleMeet.UI.SetupUI {
             var installDir = Path.Combine(
                 Path.GetPathRoot(Environment.SystemDirectory),
                 "AutoGoogleMeet");
+
+            // code for debug, uncomment to test cancel function
+            Thread.Sleep(5000);
 
             if (!Directory.Exists(installDir)) {
                 copyUtil.CreateDir(installDir);
@@ -93,7 +101,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
         private void bgw_Completed(object sender, RunWorkerCompletedEventArgs e) {
             if (e.Cancelled) {
                 // Tidy up and exit
-                Directory.Delete(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), "AutoGoogleMeet"));
+                Directory.Delete(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), "AutoGoogleMeet"), true);
                 Application.Exit();
             }
 
@@ -104,6 +112,17 @@ namespace AutoGoogleMeet.UI.SetupUI {
         }
 
         #endregion
+
+        // Custom event handler for cancel button
+        private void ButtonCancel_OnClick(object sender, EventArgs e) {
+            var result = MessageBox.Show(
+                "設定尚未完成，如你現在離開，程式將不會對你的電腦進行變更。你是否確定要離開？",
+                "Auto Google Meet 設定精靈",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+                bgw_Completed(sender, new RunWorkerCompletedEventArgs(null, null, true));
+        }
 
     }
 

@@ -52,9 +52,9 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.lblCurrentOperation.AutoSize = true;
             this.lblCurrentOperation.Location = new System.Drawing.Point(11, 83);
             this.lblCurrentOperation.Name = "lblCurrentOperation";
-            this.lblCurrentOperation.Size = new System.Drawing.Size(183, 20);
+            this.lblCurrentOperation.Size = new System.Drawing.Size(85, 20);
             this.lblCurrentOperation.TabIndex = 2;
-            this.lblCurrentOperation.Text = "{%current_operation%}";
+            this.lblCurrentOperation.Text = "正在開始...";
             // 
             // frmSetupCopyFiles
             // 
