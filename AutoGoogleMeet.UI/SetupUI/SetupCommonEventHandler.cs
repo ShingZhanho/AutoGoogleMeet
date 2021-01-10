@@ -13,7 +13,8 @@ namespace AutoGoogleMeet.UI.SetupUI {
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
-                Application.Exit();
+                TidyUpAndExit(
+                    Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), "AutoGoogleMeet"));
         }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // Deletes installation files
             try {
                 Directory.Delete(args[0].ToString(), true);
+                
             }
             catch {
                 // ignored

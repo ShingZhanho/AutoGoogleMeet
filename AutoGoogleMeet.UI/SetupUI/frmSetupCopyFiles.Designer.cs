@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace AutoGoogleMeet.UI.SetupUI {
     public partial class frmSetupCopyFiles : TemplateSetupForm {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.pgBar = new System.Windows.Forms.ProgressBar();
@@ -14,6 +18,10 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.panButtons.SuspendLayout();
             this.panImage.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnNext
+            // 
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // panDesc
             // 
@@ -36,9 +44,9 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "請稍候...";
+            this.label1.Text = "正在進行：";
             // 
             // pgBar
             // 
@@ -69,7 +77,6 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.panImage.ResumeLayout(false);
             this.panImage.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         private System.Windows.Forms.Label lblCurrentOperation;

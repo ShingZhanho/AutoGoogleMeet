@@ -7,8 +7,8 @@ namespace AutoGoogleMeet.Core {
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main() {
-            UIController.Main(null);
+        static void Main(string[] args) {
+            UIController.Main(args);
         }
     }
 }

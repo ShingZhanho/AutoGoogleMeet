@@ -78,7 +78,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
                             }
                             // fails for 5 times, end installation and exit
                             if (attempt == 5) {
-                                MessageBox.Show("無法刪除舊版的Auto Google Meet，設定精靈將會關閉。",
+                                MessageBox.Show("無法刪除舊版的Auto Google Meet，設定精靈將會結束。",
                                     "Auto Google Meet 設定精靈",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 // The application will not be able to clean up under this circumstance
@@ -92,17 +92,17 @@ namespace AutoGoogleMeet.UI.SetupUI {
                     copyUtil.CreateDir(installDir);
                 } else {
                     // Exit if the user cancel
-                    Application.Exit();
+                    SetupCommonEventHandler.TidyUpAndExit(installDir);
                 }
             }
-            copyUtil.CopyAll(Application.StartupPath, installDir);
+            copyUtil.CopyAll(Application.StartupPath, installDir,
+                new Random().Next(0, 11) * 1000);
         }
 
         private void bgw_Completed(object sender, RunWorkerCompletedEventArgs e) {
             if (e.Cancelled) {
                 // Tidy up and exit
-                Directory.Delete(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), "AutoGoogleMeet"), true);
-                Application.Exit();
+                SetupCommonEventHandler.TidyUpAndExit(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), "AutoGoogleMeet"));
             }
 
             // Update UI
@@ -121,9 +121,24 @@ namespace AutoGoogleMeet.UI.SetupUI {
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
-                bgw_Completed(sender, new RunWorkerCompletedEventArgs(null, null, true));
+                SetupCommonEventHandler.TidyUpAndExit(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory),
+                    "AutoGoogleMeet"));
         }
 
+        private void btnNext_Click(object sender, EventArgs e) {
+            // Restart the copied app in X:\AutoGoogleMeet
+            new Process {
+                StartInfo = new ProcessStartInfo {
+                    UseShellExecute = true,
+                    Verb = "runas",
+                    FileName = Path.Combine(
+                        Path.GetPathRoot(Environment.SystemDirectory), 
+                        "AutoGoogleMeet\\AutoGoogleMeet.exe"),
+                    Arguments = "--SetupJumpToForm:3"
+                }
+            }.Start();
+            Application.Exit();
+        }
     }
 
     public class SetupFileCopier {
