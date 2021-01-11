@@ -26,7 +26,8 @@ namespace AutoGoogleMeet.UI {
                     case CommandLineOptions.SetupJumpToForm.CopyFilesForm:
                         new frmSetupCopyFiles().Show();
                         break;
-                    case CommandLineOptions.SetupJumpToForm.MeetIDsForm:
+                    case CommandLineOptions.SetupJumpToForm.GAccountForm:
+                        new frmSetupGAccount().Show();
                         break;
                 }
             }
@@ -85,7 +86,8 @@ namespace AutoGoogleMeet.UI {
             WelcomeForm = 0,
             UAForm = 1, 
             CopyFilesForm = 2, 
-            MeetIDsForm = 3
+            GAccountForm = 3,
+            MeetIDsForm = 4
         }
     }
 }

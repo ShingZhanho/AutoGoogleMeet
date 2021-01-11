@@ -67,6 +67,12 @@
     <Compile Include="SetupUI\frmSetupCopyFiles.Designer.cs">
       <DependentUpon>frmSetupCopyFiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="SetupUI\frmSetupGAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetupUI\frmSetupGAccount.Designer.cs">
+      <DependentUpon>frmSetupGAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="SetupUI\frmUserAgreement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     <EmbeddedResource Include="SetupUI\frmSetupCopyFiles.resx">
       <DependentUpon>frmSetupCopyFiles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SetupUI\frmSetupGAccount.resx">
+      <DependentUpon>frmSetupGAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetupUI\frmUserAgreement.resx">
       <DependentUpon>frmUserAgreement.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +129,7 @@
     <None Include="Resources\Setup\UserAgreement_zh-HK.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="SetupUI\frmSetupGAccount.Designer.cs" />
     <None Include="sig_AGM.pfx" />
   </ItemGroup>
   <ItemGroup />
