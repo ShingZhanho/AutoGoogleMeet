@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -137,6 +133,13 @@ namespace AutoGoogleMeet.UI.SetupUI {
         }
 
         private void btnNext_Click(object sender, EventArgs e) {
+            // Do not restart if in debug mode
+            if (UIController.cmdOptions.IsDebugMode) {
+                new frmSetupGAccount().Show();
+                Close();
+                return;
+            }
+
             // Restart the copied app in X:\AutoGoogleMeet
             new Process {
                 StartInfo = new ProcessStartInfo {

@@ -8,11 +8,14 @@ using AutoGoogleMeet.UI.SetupUI;
 
 namespace AutoGoogleMeet.UI {
     public static class UIController {
+
+        internal static CommandLineOptions cmdOptions;
+
         [STAThread]
         public static void Main(string[] args) {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var cmdOptions = new CommandLineOptions(args);
+            cmdOptions = new CommandLineOptions(args);
             // show Setup form if not done
             if (!SetupIsCompleted()) {
                 // Show the dedicated form
@@ -28,6 +31,8 @@ namespace AutoGoogleMeet.UI {
                         break;
                     case CommandLineOptions.SetupJumpToForm.GAccountForm:
                         new frmSetupGAccount().Show();
+                        break;
+                    case CommandLineOptions.SetupJumpToForm.MeetIDsForm:
                         break;
                 }
             }
@@ -51,17 +56,21 @@ namespace AutoGoogleMeet.UI {
                     case "SetupJumpToForm":
                         Set_SetupJumpToForm(paras);
                         break;
+                    case "DebugMode":
+                        Set_DebugMode();
+                        break;
                 }
             }
         }
         
         // Options
         internal SetupJumpToForm JumpToForm = SetupJumpToForm.WelcomeForm;
+        internal bool IsDebugMode;
         
         
         // Methods
         private (string command, object[] paras) ExtractOption(string option) {
-            if (option.Split(':').Length == 0) return (option.Replace("--", string.Empty), null);
+            if (option.Split(':').Length == 1) return (option.Replace("--", string.Empty), null);
             var commandHead = option.Split(':')[0].Replace("--", string.Empty);
             var commandPara = new List<object>();
             foreach (var str in option.Split(':')[1].Split(';')) {
@@ -81,6 +90,8 @@ namespace AutoGoogleMeet.UI {
                 return;
             }
         }
+
+        private void Set_DebugMode() => IsDebugMode = true;
 
         internal enum SetupJumpToForm {
             WelcomeForm = 0,
