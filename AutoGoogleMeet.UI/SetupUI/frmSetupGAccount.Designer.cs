@@ -17,7 +17,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnHelp_email = new System.Windows.Forms.Button();
             this.panDesc.SuspendLayout();
             this.panButtons.SuspendLayout();
             this.panImage.SuspendLayout();
@@ -29,7 +29,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // 
             // panDesc
             // 
-            this.panDesc.Controls.Add(this.button1);
+            this.panDesc.Controls.Add(this.btnHelp_email);
             this.panDesc.Controls.Add(this.textBox2);
             this.panDesc.Controls.Add(this.label4);
             this.panDesc.Controls.Add(this.label3);
@@ -84,7 +84,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 104);
+            this.label4.Location = new System.Drawing.Point(12, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 20);
             this.label4.TabIndex = 4;
@@ -92,25 +92,26 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(75, 101);
+            this.textBox2.Location = new System.Drawing.Point(75, 87);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(322, 28);
             this.textBox2.TabIndex = 5;
             // 
-            // button1
+            // btnHelp_email
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int) (((byte) (39)))), ((int) (((byte) (101)))), ((int) (((byte) (203)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int) (((byte) (41)))), ((int) (((byte) (152)))), ((int) (((byte) (226)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(430, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 32);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnHelp_email.BackgroundImage = global::AutoGoogleMeet.UI.Properties.Resources.question_icon;
+            this.btnHelp_email.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelp_email.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnHelp_email.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(101)))), ((int)(((byte)(203)))));
+            this.btnHelp_email.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(152)))), ((int)(((byte)(226)))));
+            this.btnHelp_email.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp_email.Location = new System.Drawing.Point(403, 50);
+            this.btnHelp_email.Name = "btnHelp_email";
+            this.btnHelp_email.Size = new System.Drawing.Size(30, 30);
+            this.btnHelp_email.TabIndex = 6;
+            this.btnHelp_email.UseVisualStyleBackColor = true;
+            this.btnHelp_email.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmSetupGAccount
             // 
@@ -124,6 +125,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.panImage.ResumeLayout(false);
             this.panImage.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.TextBox textBox1;
@@ -132,6 +134,6 @@ namespace AutoGoogleMeet.UI.SetupUI {
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHelp_email;
     }
 }

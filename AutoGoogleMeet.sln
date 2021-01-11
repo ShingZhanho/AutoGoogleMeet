@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGoogleMeet.UI", "AutoGoogleMeet.UI\AutoGoogleMeet.UI.csproj", "{BBD3C90A-1A62-401C-9868-AC84D951D230}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGoogleMeet.Core", "AutoGoogleMeet.Core\AutoGoogleMeet.Core.csproj", "{E58EF1EB-E66A-4EE5-AA4D-4D32BD206FA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGoogleMeet.Settings", "AutoGoogleMeet.Settings\AutoGoogleMeet.Settings.csproj", "{B42865F7-CE07-4BBE-B376-38E76A9BE008}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGoogleMeet.WebDrv", "AutoGoogleMeet.WebDrv\AutoGoogleMeet.WebDrv.csproj", "{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,15 @@ Global
 		{B42865F7-CE07-4BBE-B376-38E76A9BE008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B42865F7-CE07-4BBE-B376-38E76A9BE008}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B42865F7-CE07-4BBE-B376-38E76A9BE008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D713E782-AC34-4659-938D-724014036D1C}
 	EndGlobalSection
 EndGlobal
