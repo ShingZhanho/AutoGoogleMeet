@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using AutoGoogleMeet.Settings;
+using AutoGoogleMeet.WebDrv;
 
 namespace AutoGoogleMeet.UI.SetupUI {
     public partial class frmSetupWelcome : Form {
@@ -50,6 +51,15 @@ namespace AutoGoogleMeet.UI.SetupUI {
         }
 
         private void btnNext_Click(object sender, EventArgs e) {
+            // Check network connection
+            if (!NetworkUtil.NetworkIsConnected()) {
+                MessageBox.Show(
+                    "無法開始設定。你的電腦尚未連接到網際網路，應用程式需要網際網路來運作。",
+                    Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+                return;
+            }
+
             if (!IsAdministrator()) {
                 MessageBox.Show(
                     "錯誤 (0x00000001)\n無法開始設定，將會以系統管理員身份重新開啟設定精靈。",
@@ -66,6 +76,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
                     }
                 }.Start();
                 Application.Exit();
+                return;
             }
 
             // show User agreement UI
