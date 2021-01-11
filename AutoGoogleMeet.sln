@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGoogleMeet.Settings", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGoogleMeet.WebDrv", "AutoGoogleMeet.WebDrv\AutoGoogleMeet.WebDrv.csproj", "{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReleaseTool", "ReleaseTool\ReleaseTool.csproj", "{B3ED1747-A808-44E4-AB3D-20AFBBDB6FA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DDFF8F1-3309-4F69-AFB6-1DCF042C0D29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3ED1747-A808-44E4-AB3D-20AFBBDB6FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3ED1747-A808-44E4-AB3D-20AFBBDB6FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3ED1747-A808-44E4-AB3D-20AFBBDB6FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3ED1747-A808-44E4-AB3D-20AFBBDB6FA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
