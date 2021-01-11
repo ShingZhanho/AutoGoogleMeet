@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoGoogleMeet.UI.SetupUI {
-    public partial class frmSetupGAccount {
+    public partial class frmSetupGAccount : TemplateSetupForm {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent() {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -13,6 +17,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panDesc.SuspendLayout();
             this.panButtons.SuspendLayout();
             this.panImage.SuspendLayout();
@@ -24,6 +29,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // 
             // panDesc
             // 
+            this.panDesc.Controls.Add(this.button1);
             this.panDesc.Controls.Add(this.textBox2);
             this.panDesc.Controls.Add(this.label4);
             this.panDesc.Controls.Add(this.label3);
@@ -88,9 +94,23 @@ namespace AutoGoogleMeet.UI.SetupUI {
             // 
             this.textBox2.Location = new System.Drawing.Point(75, 101);
             this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '※';
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(322, 28);
             this.textBox2.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int) (((byte) (39)))), ((int) (((byte) (101)))), ((int) (((byte) (203)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int) (((byte) (41)))), ((int) (((byte) (152)))), ((int) (((byte) (226)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(430, 49);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 32);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmSetupGAccount
             // 
@@ -104,7 +124,6 @@ namespace AutoGoogleMeet.UI.SetupUI {
             this.panImage.ResumeLayout(false);
             this.panImage.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         private System.Windows.Forms.TextBox textBox1;
@@ -113,5 +132,6 @@ namespace AutoGoogleMeet.UI.SetupUI {
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

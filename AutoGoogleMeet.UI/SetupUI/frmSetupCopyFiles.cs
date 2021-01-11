@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using AutoGoogleMeet.Settings;
 using Microsoft.Win32;
 
 namespace AutoGoogleMeet.UI.SetupUI {
@@ -41,7 +42,7 @@ namespace AutoGoogleMeet.UI.SetupUI {
                 "AutoGoogleMeet");
 
             // code for debug, uncomment to test cancel function
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
 
             if (!Directory.Exists(installDir)) {
                 copyUtil.CreateDir(installDir);
@@ -93,13 +94,19 @@ namespace AutoGoogleMeet.UI.SetupUI {
                 }
             }
             copyUtil.CopyAll(Application.StartupPath, installDir,
-                new Random().Next(0, 5) * 1000);
+                new Random().Next(0, 5) * 200);
             
-            // Register to launch with Windows
+            // Register to launch with Windows & Configure WebBrowser control
             try {
                 var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 key?.SetValue("AutoGoogleMeet", Path.Combine(installDir, "AutoGoogleMeet.exe"));
                 key?.Close();
+                
+                // the below code allows WebBrowser to render like a IE 11
+                var IEkey = Registry.LocalMachine.OpenSubKey(
+                    @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true);
+                IEkey?.SetValue(Path.GetFileName(Application.ExecutablePath), 11001, RegistryValueKind.DWord);
+                IEkey?.Close();
             }
             catch {
                 // ignored
