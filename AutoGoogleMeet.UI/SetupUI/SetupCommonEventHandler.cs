@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace AutoGoogleMeet.UI.SetupUI {
     public static class SetupCommonEventHandler {
@@ -49,6 +50,14 @@ namespace AutoGoogleMeet.UI.SetupUI {
             }
             
             // Delete startup settings
+            try {
+                var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                key?.DeleteValue("AutoGoogleMeet");
+                key?.Close();
+            }
+            catch {
+                // ignored
+            }
         }
 
         private static void BackgroundDelete_WorkComplete(object sender, RunWorkerCompletedEventArgs e) {

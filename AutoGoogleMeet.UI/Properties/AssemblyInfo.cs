@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AutoGoogleMeet.UI")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The UI module for the Auto Google Meet.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AutoGoogleMeet.UI")]

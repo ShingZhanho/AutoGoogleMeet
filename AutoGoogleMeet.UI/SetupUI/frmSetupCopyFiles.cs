@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace AutoGoogleMeet.UI.SetupUI {
     public partial class frmSetupCopyFiles : TemplateSetupForm {
@@ -96,7 +97,17 @@ namespace AutoGoogleMeet.UI.SetupUI {
                 }
             }
             copyUtil.CopyAll(Application.StartupPath, installDir,
-                new Random().Next(0, 11) * 1000);
+                new Random().Next(0, 5) * 1000);
+            
+            // Register to launch with Windows
+            try {
+                var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                key?.SetValue("AutoGoogleMeet", Path.Combine(installDir, "AutoGoogleMeet.exe"));
+                key?.Close();
+            }
+            catch {
+                // ignored
+            }
         }
 
         private void bgw_Completed(object sender, RunWorkerCompletedEventArgs e) {
