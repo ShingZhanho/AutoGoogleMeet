@@ -35,7 +35,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>sig_AGM.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>AGM_Signature.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>AutoGoogleMeetIcon.ico</ApplicationIcon>
@@ -62,6 +62,7 @@
     <Compile Include="UserConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AGM_Signature.pfx" />
     <None Include="packages.config" />
     <None Include="sig_AGM.pfx" />
   </ItemGroup>

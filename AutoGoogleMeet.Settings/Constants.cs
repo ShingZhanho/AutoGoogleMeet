@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -36,6 +37,12 @@ namespace AutoGoogleMeet.Settings {
         /// </summary>
         public static readonly string ExePath = Application.StartupPath;
 
+        // Version string, update if release
         public const string Version = "v0.0.1.1_beta";
+        
+        // The path of Chrome Drive exe
+        public static readonly string ChromeDrvPath = Path.Combine(
+            Application.StartupPath,
+            "SupportingPackages\\Selenium.ChromeDriver");
     }
 }

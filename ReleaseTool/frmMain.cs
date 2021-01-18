@@ -45,23 +45,29 @@ namespace ReleaseTool {
             };
             bgw.DoWork += (bgwSender, bgwE) => {
                 btnGenerate.Enabled = false;
-                richTextBox1.Enabled = false;
                 treeFiles.Enabled = false;
 
                 var myNode = (MyNode) treeFiles.Nodes[0];
                 var rootFolder = new JsonRootFolder(myNode, myNode.Path);
-                var json = JsonConvert.SerializeObject(rootFolder);
+                var json = JsonConvert.SerializeObject(rootFolder, 
+                    new JsonSerializerSettings() {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    DefaultValueHandling = DefaultValueHandling.Ignore
+                });
                 var results = new List<object>();
                 results.Add(json);
                 bgwE.Result = results;
             };
             bgw.RunWorkerCompleted += (bgwCSender, bgwCE) => {
                 btnGenerate.Enabled = true;
-                richTextBox1.Enabled = true;
                 treeFiles.Enabled = true;
 
                 var results = (List<object>) bgwCE.Result;
-                richTextBox1.Text = results[0].ToString();
+                try {
+                    File.WriteAllText(".\\agm_packages.json", results[0].ToString());
+                } catch {
+                    // ignored
+                }
             };
             bgw.RunWorkerAsync();
         }
@@ -83,7 +89,7 @@ namespace ReleaseTool {
     internal class MyNode : TreeNode {
         internal MyNode(string name, string path, NodeType type) : base(name) {
             Path = path;
-            Checked = !new[] {".pdb", ".config"}.Contains(System.IO.Path.GetFileName(path)
+            Checked = !new[] {".pdb", ".config", ".xml"}.Contains(System.IO.Path.GetFileName(path)
                 .Replace(System.IO.Path.GetFileNameWithoutExtension(path), string.Empty));
             TypeOfNode = type;
         }
@@ -99,6 +105,9 @@ namespace ReleaseTool {
     [JsonObject(MemberSerialization.OptIn)]
     internal class JsonRootFolder {
         internal JsonRootFolder(MyNode node, string root) {
+            if (Directory.GetDirectories(node.Path).Length > 0) JsonFolders = new List<JsonFolder>();
+            if (Directory.GetFiles(node.Path).Length > 0) JsonFiles = new List<JsonFile>();
+
             foreach (MyNode myNode in node.Nodes) {
                 if (!myNode.Checked) continue;
                 if (myNode.TypeOfNode == MyNode.NodeType.Folder)
@@ -109,9 +118,11 @@ namespace ReleaseTool {
         }
         
         [JsonProperty("folders")]
-        internal List<JsonFolder> JsonFolders = new List<JsonFolder>();
+        [DefaultValue(null)]
+        internal List<JsonFolder> JsonFolders;
         [JsonProperty("files")]
-        internal List<JsonFile> JsonFiles = new List<JsonFile>();
+        [DefaultValue(null)]
+        internal List<JsonFile> JsonFiles;
 
         [JsonObject(MemberSerialization.OptIn)]
         internal class JsonFolder : JsonRootFolder {
